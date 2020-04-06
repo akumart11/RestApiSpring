@@ -1,10 +1,11 @@
-package guru.springframework.springrestclientexamples.service;
+package guru.springframework.springrestclientexamples.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import guru.springframework.api.domain.User;
 import guru.springframework.api.domain.UserData;
@@ -24,7 +25,9 @@ public class ApiServiceImpl implements ApiService {
 	@Override
 	public List<User> getUser(Integer limit) {
 		
-		UserData userdata = restTemplate.getForObject( api_url + limit, UserData.class);
+		UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(api_url).queryParam("limit", 1);
+		
+		UserData userdata = restTemplate.getForObject( uriBuilder.toUriString(), UserData.class);
 		return userdata.getData();
 	}
 
