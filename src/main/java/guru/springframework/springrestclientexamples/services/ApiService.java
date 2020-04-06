@@ -1,4 +1,4 @@
-package guru.springframework.springrestclientexamples.service;
+package guru.springframework.springrestclientexamples.services;
 
 import java.util.List;
 
